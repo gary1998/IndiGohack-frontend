@@ -1,0 +1,116 @@
+[
+    {
+        "step": 0.0,
+        "name": "Ticket Booking",
+        "location": "Source Airport",
+        "carrier": "User"
+    },
+    {
+        "step": 1.0,
+        "name": "Security Check",
+        "location": "Source Airport",
+        "carrier": "CISF"
+    },
+    {
+        "step": 1.1,
+        "name": "Received by Ground Staff",
+        "location": "Source Airport",
+        "carrier": "IndiGo Ground Staff"
+    },
+    {
+        "step": 1.2,
+        "name": "Baggage Submission",
+        "location": "Source Airport",
+        "carrier": "IndiGo Ground Staff"
+    },
+    {
+        "step": 1.3,
+        "name": "Boarding Pass Generation",
+        "location": "Source Airport",
+        "carrier": "IndiGo Ground Staff"
+    },
+    {
+        "step": 1.4,
+        "name": "SHA Done",
+        "location": "Source Airport",
+        "carrier": "IndiGo Ground Staff"
+    },
+    {
+        "step": 1.5,
+        "name": "Gate Escort",
+        "location": "Source Airport",
+        "carrier": "IndiGo Ground Staff"
+    },
+    {
+        "step": 1.6,
+        "name": "Bus Boarding",
+        "location": "Source Airport",
+        "carrier": "IndiGo Ground Staff"
+    },
+    {
+        "step": 1.7,
+        "name": "Bus Deboarding",
+        "location": "Source Airport",
+        "carrier": "IndiGo Ground Staff"
+    },
+    {
+        "step": 1.8,
+        "name": "On-Ramp",
+        "location": "Source Airport",
+        "carrier": "IndiGo Ground Staff"
+    },
+    {
+        "step": 2.0,
+        "name": "Flight Boarding",
+        "location": "Source Airport",
+        "carrier": "IndiGo Cabin Crew"
+    },
+    {
+        "step": 2.1,
+        "name": "Seat Escort",
+        "location": "Source Airport",
+        "carrier": "IndiGo Cabin Crew"
+    },
+    {
+        "step": 2.2,
+        "name": "Meal Service",
+        "location": "Source Airport",
+        "carrier": "IndiGo Cabin Crew"
+    },
+    {
+        "step": 2.3,
+        "name": "Received by Ground Staff",
+        "location": "Destination Airport",
+        "carrier": "IndiGo Ground Staff"
+    },
+    {
+        "step": 2.4,
+        "name": "Bus Boarding",
+        "location": "Destination Airport",
+        "carrier": "IndiGo Ground Staff"
+    },
+    {
+        "step": 2.5,
+        "name": "Bus Deboarding",
+        "location": "Destination Airport",
+        "carrier": "IndiGo Ground Staff"
+    },
+    {
+        "step": 2.6,
+        "name": "Baggage Collection",
+        "location": "Destination Airport",
+        "carrier": "IndiGo Ground Staff"
+    },
+    {
+        "step": 2.7,
+        "name": "Receiver Verification",
+        "location": "Destination Airport",
+        "carrier": "IndiGo Ground Staff"
+    },
+    {
+        "step": 2.8,
+        "name": "Handover to Receiver",
+        "location": "Destination Airport",
+        "carrier": "IndiGo Ground Staff"
+    }
+]

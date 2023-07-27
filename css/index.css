@@ -1,0 +1,9 @@
+video {
+  width: 20rem;
+}
+
+@media (min-width: 768px) {
+  video {
+    width: 50rem;
+  }
+}
