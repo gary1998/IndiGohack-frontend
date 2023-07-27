@@ -71,7 +71,11 @@ async function login() {
     $(".ui .message").css("display", "flex");
   }
 
-  let resp = await fetch("http://0.0.0.0:5600/api/auth/login", {
+  let backendURL="http://0.0.0.0:5600";
+  await $.getJSON("js/config.json", function(resp){
+    backendURL = resp.BACKEND_URL;
+  });
+  let resp = await fetch(`${backendURL}/api/auth/login`, {
     method: "POST",
     mode: "cors",
     headers: {
