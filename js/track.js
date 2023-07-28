@@ -80,7 +80,9 @@ async function search() {
       $(".ui .message")[0].classList.remove("positive");
       $(".ui .message i")[0].classList = ["exclamation icon"];
       $(".ui .message").css("display", "flex");
-      $("div.ui.text.container.ui.basic.modal").remove();
+      document.querySelectorAll(".modal").forEach(function (elem) {
+        elem.remove();
+      });
       document.querySelector("div.ui.text.container").innerHTML += `
       <div class="ui basic modal">
         <div class="ui icon header">
@@ -95,7 +97,9 @@ async function search() {
       $(".ui .message")[0].classList.add("positive");
       $(".ui .message i")[0].classList = ["check icon"];
       $(".ui .message").css("display", "flex");
-      $("div.ui.text.container.ui.basic.modal").remove();
+      document.querySelectorAll(".modal").forEach(function (elem) {
+        elem.remove();
+      });
       document.querySelector("div.ui.text.container").innerHTML += `
       <div class="ui basic modal">
         <div class="ui icon header">
