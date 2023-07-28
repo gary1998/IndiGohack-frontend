@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
   $(".ui.selection.dropdown").dropdown({
     clearable: true,
     forceSelection: false,
@@ -18,75 +17,127 @@ $(document).ready(function () {
       });
     });
   });
-
-  $("input[name=search-criteria-sel]").on("change", function (e) {
-    if (e.target.value == "opt1") {
-      $("#source-name-div").addClass("disabled");
-      $("#dest-name-div").addClass("disabled");
-      $("input[name=source-name]").prop("disabled", true);
-      $("input[name=dest-name]").prop("disabled", true);
-      $("input[name=recvr-mobile-nmbr]").prop("disabled", true);
-
-      $("input[name=psgr-pnr]").prop("disabled", false);
-      $("input[name=psgr-first-name]").prop("disabled", false);
-      $("input[name=psgr-last-name]").prop("disabled", false);
-      $("input[name=travel-dt]").prop("disabled", false);
-    }
-    if (e.target.value == "opt2") {
-      $("input[name=psgr-pnr]").prop("disabled", true);
-      $("input[name=psgr-first-name]").prop("disabled", true);
-      $("input[name=psgr-last-name]").prop("disabled", true);
-      $("input[name=recvr-mobile-nmbr]").prop("disabled", true);
-
-      $("#source-name-div").removeClass("disabled");
-      $("#dest-name-div").removeClass("disabled");
-      $("input[name=source-name]").prop("disabled", false);
-      $("input[name=dest-name]").prop("disabled", false);
-      $("input[name=travel-dt]").prop("disabled", false);
-    }
-    if (e.target.value == "opt3") {
-      $("#source-name-div").addClass("disabled");
-      $("#dest-name-div").addClass("disabled");
-      $("input[name=source-name]").prop("disabled", true);
-      $("input[name=dest-name]").prop("disabled", true);
-      $("input[name=psgr-pnr]").prop("disabled", true);
-      $("input[name=psgr-first-name]").prop("disabled", true);
-      $("input[name=psgr-last-name]").prop("disabled", true);
-
-      $("input[name=travel-dt]").prop("disabled", false);
-      $("input[name=recvr-mobile-nmbr]").prop("disabled", false);
-    }
-  });
-
-  $("#def-radio").click();
-
 });
 
-function search() {
-    let searchOpt = $("input[name=search-criteria-sel]:checked").val();
-    if (searchOpt == "opt1"){
-        let pnr = $("input[name=psgr-pnr]").val();
-        let name = $("input[name=psgr-first-name]").val()+" "+$("input[name=psgr-last-name]").val();
-        let dt = $("input[name=travel-dt]").val();
-        if (pnr=="" || name == "" || dt == "") {
-            alert('invalid');
-        }
-        console.log({pnr, name, dt});
-    } else if(searchOpt == "opt2"){
-        let src = $("input[name=source-name]").val();
-        let dest = $("input[name=dest-name]").val();
-        let dt = $("input[name=travel-dt]").val();
-        if (src=="" || dest == "" || dt == "") {
-            alert('invalid');
-        }
-        console.log({src, dest, dt});
-    } else if (searchOpt=="opt3"){
-        let receiverMobileNumber = $("input[name=recvr-mobile-nmbr]").val();
-        let dt = $("input[name=travel-dt]").val();
-        if (receiverMobileNumber=="" || dt == "") {
-            alert('invalid');
-        }
-        console.log({receiverMobileNumber, dt});
+async function search() {
+  let pnr = $("input[name=psgr-pnr]").val();
+  let name =
+    $("input[name=psgr-first-name]").val() +
+    " " +
+    $("input[name=psgr-last-name]").val();
+  let dt = $("input[name=travel-dt]").val();
+  let src = $("input[name=source-name]").val();
+  let dest = $("input[name=dest-name]").val();
+  let receiverMobileNumber = $("input[name=recvr-mobile-nmbr]").val();
+  let searchQuery = {
+    pnr,
+    name,
+    date: dt,
+    source: src,
+    destination: dest,
+    receiver_phone: receiverMobileNumber,
+  };
+  searchQuery["name"] = searchQuery["name"].trim();
+  Object.keys(searchQuery).forEach(
+    (key) =>
+      (searchQuery[key] === undefined ||
+        searchQuery[key] == null ||
+        searchQuery[key] == "") &&
+      delete searchQuery[key]
+  );
+  if (Object.keys(searchQuery).length == 0) {
+    $(".ui .message .content .header")[0].innerHTML = "Error!";
+    $(".ui .message p")[0].innerHTML = `Error: Invalid parameters provided`;
+    $(".ui .message")[0].classList.add("negative");
+    $(".ui .message i")[0].classList = ["exclamation triangle icon"];
+    $(".ui .message").css("display", "flex");
+    return false;
+  }
+  let backendURL = "http://0.0.0.0:5600";
+  await $.getJSON("js/config.json", function (resp) {
+    backendURL = resp.BACKEND_URL;
+  });
+  let resp = await fetch(`${backendURL}/api/unmr/search`, {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(searchQuery),
+  });
+  let data = await resp.json();
+  if (data.error) {
+    $(".ui .message .content .header")[0].innerHTML = "Error!";
+    $(".ui .message p")[0].innerHTML = `Error: ${data.error}`;
+    $(".ui .message")[0].classList.add("negative");
+    $(".ui .message i")[0].classList = ["exclamation triangle icon"];
+    $(".ui .message").css("display", "flex");
+  } else {
+    if (data.length == 0) {
+      $(".ui .message .content .header")[0].innerHTML = "No Record!";
+      $(".ui .message p")[0].innerHTML = `Try again`;
+      $(".ui .message")[0].classList.remove("negative");
+      $(".ui .message")[0].classList.remove("positive");
+      $(".ui .message i")[0].classList = ["exclamation icon"];
+      $(".ui .message").css("display", "flex");
+      $("div.ui.text.container.ui.basic.modal").remove();
+      document.querySelector("div.ui.text.container").innerHTML += `
+      <div class="ui basic modal">
+        <div class="ui icon header">
+          <i class="book icon"></i>
+          No records found
+        </div>
+      </div>`;
+    } else {
+      $(".ui .message .content .header")[0].innerHTML = "Success!";
+      $(".ui .message p")[0].innerHTML = `Records found`;
+      $(".ui .message")[0].classList.remove("negative");
+      $(".ui .message")[0].classList.add("positive");
+      $(".ui .message i")[0].classList = ["check icon"];
+      $(".ui .message").css("display", "flex");
+      $("div.ui.text.container.ui.basic.modal").remove();
+      document.querySelector("div.ui.text.container").innerHTML += `
+      <div class="ui basic modal">
+        <div class="ui icon header">
+          <i class="book icon"></i>
+          Found following records:
+        </div>
+        <div class="scrolling content">
+        <table class="ui celled table">
+        <thead>
+          <tr>
+            <th>PNR</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Receiver Name</th>
+            <th>Receiver Phone</th>
+          </tr>
+        </thead>
+        <tbody id="unmr-table">
+        </tbody>
+      </table>
+        </div>
+      </div>`;
+      data.forEach((record) => {
+        document.querySelector("#unmr-table").innerHTML += `
+          <tr>
+            <td><a href="status.html?pnr=${record.pnr}&name=${record.name}&date=${record.date}&source=${record.source}&destination=${record.destination}">${record.pnr}</a></td>
+            <td>${record.name}</td>
+            <td>${record.date}</td>
+            <td>${record.source}</td>
+            <td>${record.destination}</td>
+            <td>${record.receiver_name}</td>
+            <td>${record.receiver_phone}</td>
+          </tr>
+        `;
+      });
     }
-    $(".ui.form")[0].reset();
+    $(".modal")
+      .modal({
+        closable: true,
+      })
+      .modal("show");
+  }
 }

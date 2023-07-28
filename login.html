@@ -1,105 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FlySolo by IndiGo Airlines</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    />
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/login.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="ui top attached stackable menu">
-        <div class="header item">
-            <button id="menu-toggle-button" class="ui icon button" onclick="toggleMenu()">
-                <i class="bars icon"></i>
-            </button>
-            <img src="https://seekvectorlogo.com/wp-content/uploads/2022/01/indigo-vector-logo-2022.png"
-                alt="Indigo Airlines Logo" class="logo" onclick="window.location.href='index.html';" />
-            <p class="app-header" onclick="window.location.href='index.html';">FlySolo</p>
-        </div>
-        <div class="right menu">
-            <a href="https://www.github.com/gary1998" class="item option">
-                <button class="ui fluid icon black button">
-                    <i class="github icon"></i>
-                    GitHub
-                </button>
-            </a>
-            <a href="https://www.linkedin.com/in/gaurav-goswami-56aa84176" class="item option">
-                <button class="ui fluid icon blue button">
-                    <i class="linkedin icon"></i>
-                    LinkedIn
-                </button>
-            </a>
-            <div id="user-card" class="ui option compact menu">
-                <div class="ui simple dropdown item">
-                    <i class="user icon"></i>
-                    <span id="logged-user-email" class="text">abc@example.com</span>
-                    <div class="menu">
-                        <div onclick="window.location.href='feed.html'" class="item"><i class="pencil icon"></i>Feed
-                            Status</div>
-                        <div onclick="logout()" class="item"><i class="logout icon"></i>Logout</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    <br>
-    <div class="ui text container">
-        <form class="ui form">
-            <h4 class="ui dividing header">Staff Login</h4>
-
-            <div class="required field">
-                <label>Email ID</label>
-                <div class="field">
-                    <input name="email" type="email" placeholder="Email ID">
-                </div>
-            </div>
-            <div class="required field">
-                <label>Password</label>
-                <div class="field">
-                    <input name="password" type="password" placeholder="Password">
-                </div>
-            </div>
-            <div class="field">
-                <div class="ui toggle checkbox">
-                    <input type="checkbox" name="remember-me">
-                    <label>Remember Me</label>
-                </div>
-            </div>
-            <div class="field">
-                <a href="#">Forgot your password?</a>
-            </div>
-            <div id="login-btn" onclick="login();" class="ui animated fluid blue button link" tabindex="0">
-                <div class="visible content">Login</div>
-                <div class="hidden content">
-                    <i class="key icon"></i>
-                </div>
-            </div>
-        </form>
-        <div style="display: none;" class="ui icon negative message">
-            <i class="notched circle loading icon"></i>
-            <div class="content">
-                <div class="header">
-                  Just one second
-                </div>
-                <p>We're fetching that content for you.</p>
-            </div>
-        </div>
-    </div>
-    <br>
-    <div class="ui attached fluid one item menu">
-        <a class="item">
-            <strong>Gaurav Goswami</strong>
+      <div class="header item">
+        <button
+          id="menu-toggle-button"
+          class="ui icon button"
+          onclick="toggleMenu()"
+        >
+          <i class="bars icon"></i>
+        </button>
+        <img
+          src="https://seekvectorlogo.com/wp-content/uploads/2022/01/indigo-vector-logo-2022.png"
+          alt="Indigo Airlines Logo"
+          class="logo"
+          onclick="window.location.href='index.html';"
+        />
+        <p class="app-header" onclick="window.location.href='index.html';">
+          FlySolo
+        </p>
+      </div>
+      <div class="right menu">
+        <a href="https://www.github.com/gary1998" class="item option">
+          <button class="ui fluid icon black button">
+            <i class="github icon"></i>
+            GitHub
+          </button>
         </a>
+        <a
+          href="https://www.linkedin.com/in/gaurav-goswami-56aa84176"
+          class="item option"
+        >
+          <button class="ui fluid icon blue button">
+            <i class="linkedin icon"></i>
+            LinkedIn
+          </button>
+        </a>
+        <div id="user-card" class="ui option compact menu">
+          <div class="ui simple dropdown item">
+            <i class="user icon"></i>
+            <span id="logged-user-email" class="text">abc@example.com</span>
+            <div class="menu">
+              <div onclick="window.location.href='feed.html'" class="item">
+                <i class="pencil icon"></i>Feed Status
+              </div>
+              <div onclick="logout()" class="item">
+                <i class="logout icon"></i>Logout
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="ui text container">
+      <form class="ui form">
+        <h4 class="ui dividing header">Staff Login</h4>
+
+        <div class="required field">
+          <label>Email ID</label>
+          <div class="field">
+            <input name="email" type="email" placeholder="Email ID" />
+          </div>
+        </div>
+        <div class="required field">
+          <label>Password</label>
+          <div class="field">
+            <input name="password" type="password" placeholder="Password" />
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui toggle checkbox">
+            <input type="checkbox" name="remember-me" />
+            <label>Remember Me</label>
+          </div>
+        </div>
+        <div class="field">
+          <a href="#">Forgot your password?</a>
+        </div>
+        <div
+          id="login-btn"
+          onclick="login();"
+          class="ui animated fluid blue button link"
+          tabindex="0"
+        >
+          <div class="visible content">Login</div>
+          <div class="hidden content">
+            <i class="key icon"></i>
+          </div>
+        </div>
+      </form>
+      <div style="display: none" class="ui icon negative message">
+        <i class="notched circle loading icon"></i>
+        <div class="content">
+          <div class="header">Just one second</div>
+          <p>We're fetching that content for you.</p>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="ui attached fluid one item menu">
+      <a class="item">
+        <strong>Gaurav Goswami</strong>
+      </a>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
     <script src="js/common.js"></script>
     <script src="js/login.js"></script>
-</body>
-
+  </body>
 </html>

@@ -1,11 +1,15 @@
-window.addEventListener("resize", function () {
-  window.location.reload();
-});
+// window.addEventListener("resize", function () {
+//   window.location.reload();
+// });
 
 $(document).ready(function () {
-  let localStorageLoggedEmail = window.localStorage.getItem("flysolo-user-email");
-  let sessionStorageLoggedEmail = window.sessionStorage.getItem("flysolo-user-email");
-  let loggedInUserEmail = localStorageLoggedEmail?localStorageLoggedEmail:sessionStorageLoggedEmail;
+  let localStorageLoggedEmail =
+    window.localStorage.getItem("flysolo-user-email");
+  let sessionStorageLoggedEmail =
+    window.sessionStorage.getItem("flysolo-user-email");
+  let loggedInUserEmail = localStorageLoggedEmail
+    ? localStorageLoggedEmail
+    : sessionStorageLoggedEmail;
   if (loggedInUserEmail == null) {
     let elements = document.querySelectorAll("#user-card *");
     elements.forEach(function (elem) {

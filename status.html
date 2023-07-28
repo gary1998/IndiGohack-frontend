@@ -1,168 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FlySolo by IndiGo Airlines</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    />
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/status.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="ui top attached stackable menu">
-        <div class="header item">
-            <button id="menu-toggle-button" class="ui icon button" onclick="toggleMenu()">
-                <i class="bars icon"></i>
-            </button>
-            <img src="https://seekvectorlogo.com/wp-content/uploads/2022/01/indigo-vector-logo-2022.png"
-                alt="Indigo Airlines Logo" class="logo" onclick="window.location.href='index.html';" />
-            <p class="app-header" onclick="window.location.href='index.html';">FlySolo</p>
-        </div>
-        <div class="right menu">
-            <a href="https://www.github.com/gary1998" class="item option">
-                <button class="ui fluid icon black button">
-                    <i class="github icon"></i>
-                    GitHub
-                </button>
-            </a>
-            <a href="https://www.linkedin.com/in/gaurav-goswami-56aa84176" class="item option">
-                <button class="ui fluid icon blue button">
-                    <i class="linkedin icon"></i>
-                    LinkedIn
-                </button>
-            </a>
-            <div id="user-card" class="ui option compact menu">
-                <div class="ui simple dropdown item">
-                  <i class="user icon"></i>
-                  <span id="logged-user-email" class="text">abc@example.com</span>
-                  <div class="menu">
-                    <div onclick="window.location.href='feed.html'" class="item"><i class="pencil icon"></i>Feed Status</div>
-                    <div onclick="logout()" class="item"><i class="logout icon"></i>Logout</div>
-                  </div>
-                </div>
+      <div class="header item">
+        <button
+          id="menu-toggle-button"
+          class="ui icon button"
+          onclick="toggleMenu()"
+        >
+          <i class="bars icon"></i>
+        </button>
+        <img
+          src="https://seekvectorlogo.com/wp-content/uploads/2022/01/indigo-vector-logo-2022.png"
+          alt="Indigo Airlines Logo"
+          class="logo"
+          onclick="window.location.href='index.html';"
+        />
+        <p class="app-header" onclick="window.location.href='index.html';">
+          FlySolo
+        </p>
+      </div>
+      <div class="right menu">
+        <a href="https://www.github.com/gary1998" class="item option">
+          <button class="ui fluid icon black button">
+            <i class="github icon"></i>
+            GitHub
+          </button>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/gaurav-goswami-56aa84176"
+          class="item option"
+        >
+          <button class="ui fluid icon blue button">
+            <i class="linkedin icon"></i>
+            LinkedIn
+          </button>
+        </a>
+        <div id="user-card" class="ui option compact menu">
+          <div class="ui simple dropdown item">
+            <i class="user icon"></i>
+            <span id="logged-user-email" class="text">abc@example.com</span>
+            <div class="menu">
+              <div onclick="window.location.href='feed.html'" class="item">
+                <i class="pencil icon"></i>Feed Status
+              </div>
+              <div onclick="logout()" class="item">
+                <i class="logout icon"></i>Logout
               </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
     <div class="ui centered card">
-        <div id="pass-header" class="content">
-            <div class="right floated meta">25 July 2023</div>
-            <img class="ui avatar image" src="media/favicon-32x32.png"> 6E-2067
-        </div>
-        <div class="content">
-            <table class="ui very basic table">
-                <tr>
-                    <th>PNR</th>
-                    <td>CK594GH</td>
-                </tr>
-                <tr>
-                    <th>Name</th>
-                    <td>Poonam Sharma</td>
-                </tr>
-                <tr>
-                    <th>Source</th>
-                    <td>DEL</td>
-                </tr>
-                <tr>
-                    <th>Destination</th>
-                    <td>BLR</td>
-                </tr>
-                <tr>
-                    <th>Gate</th>
-                    <td>22</td>
-                </tr>
-                <tr>
-                    <th>Seat</th>
-                    <td>23A</td>
-                </tr>
-            </table>
-        </div>
+      <div id="pass-header" class="content">
+        <div id="psgr-dt" class="right floated meta">25 July 2023</div>
+        <img class="ui avatar image" src="media/favicon-32x32.png" /> 6E-2067
+      </div>
+      <div class="content">
+        <table class="ui very basic table">
+          <tr>
+            <th>PNR</th>
+            <td id="psgr-pnr">CK594GH</td>
+          </tr>
+          <tr>
+            <th>Name</th>
+            <td id="psgr-name">Poonam Sharma</td>
+          </tr>
+          <tr>
+            <th>Source</th>
+            <td id="psgr-src">DEL</td>
+          </tr>
+          <tr>
+            <th>Destination</th>
+            <td id="psgr-dest">BLR</td>
+          </tr>
+          <tr>
+            <th>Gate</th>
+            <td>22</td>
+          </tr>
+          <tr>
+            <th>Seat</th>
+            <td>23A</td>
+          </tr>
+        </table>
+      </div>
     </div>
     <div class="ui container">
-        <table id="events-table" class="ui celled table">
-            <thead>
-                <tr>
-                    <th>Event</th>
-                    <th>Time</th>
-                    <th>Assignee</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td data-label="Name">Security Check Started</td>
-                    <td data-label="Age">2023-07-25T09:02:52.101Z</td>
-                    <td data-label="Email">SI Sonu Manothia</td>
-                </tr>
-                <tr>
-                    <td data-label="Name">Received by IndiGo Ground Staff</td>
-                    <td data-label="Age">2023-07-25T09:02:58.000Z</td>
-                    <td data-label="Email">Jane Stephen</td>
-                </tr>
-            </tbody>
-            <tfoot class="full-width">
-                <tr>
-                  <th colspan="4">
-                    <div class="ui small basic icon buttons">
-                        <button onclick="refreshStatus()" class="ui button"><i class="refresh icon"></i></button>
-                        <button onclick="downloadTable()" class="ui button"><i class="download icon"></i></button>
-                      </div>
-                  </th>
-                </tr>
-              </tfoot>
-        </table>
-        <div class="ui six stackable steps">
-            <div id="sec-check-step" class="completed step">
-                <i class="clipboard check icon"></i>
-                <div class="content">
-                    <div class="title">Security Check</div>
-                </div>
-            </div>
-            <div id="bag-sub-step" class="step">
-                <i class="pallet icon"></i>
-                <div class="content">
-                    <div class="title">Baggage Submission</div>
-                </div>
-            </div>
-            <div id="flight-board-step" class="step">
-                <i class="bus icon"></i>
-                <div class="content">
-                    <div class="title">Flight Boarding</div>
-                </div>
-            </div>
-            <div id="in-flight-step" class="step">
-                <i class="plane icon"></i>
-                <div class="content">
-                    <div class="title">In-Flight</div>
-                </div>
-            </div>
-            <div id="bag-coll-step" class="step">
-                <i class="dolly icon"></i>
-                <div class="content">
-                    <div class="title">Baggage Collection</div>
-                </div>
-            </div>
-            <div id="handover-step" class="step">
-                <i class="handshake icon"></i>
-                <div class="content">
-                    <div class="title">Handover</div>
-                </div>
-            </div>
+      <table id="events-table" class="ui celled table">
+        <thead>
+          <tr>
+            <th>Event Name</th>
+            <th>Time</th>
+            <th>Assignee</th>
+          </tr>
+        </thead>
+        <tbody id="psgr-event-tbl"></tbody>
+        <tfoot class="full-width">
+          <tr>
+            <th colspan="4">
+              <div class="ui small basic icon buttons">
+                <button onclick="refreshStatus()" class="ui button">
+                  <i class="refresh icon"></i>
+                </button>
+                <button onclick="downloadTable()" class="ui button">
+                  <i class="download icon"></i>
+                </button>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="ui six stackable steps">
+        <div id="sec-check-step" class="step">
+          <i class="clipboard check icon"></i>
+          <div class="content">
+            <div class="title">Security Check</div>
+          </div>
         </div>
+        <div id="bag-sub-step" class="step">
+          <i class="pallet icon"></i>
+          <div class="content">
+            <div class="title">Baggage Submission</div>
+          </div>
+        </div>
+        <div id="flight-board-step" class="step">
+          <i class="bus icon"></i>
+          <div class="content">
+            <div class="title">Flight Boarding</div>
+          </div>
+        </div>
+        <div id="in-flight-step" class="step">
+          <i class="plane icon"></i>
+          <div class="content">
+            <div class="title">In-Flight</div>
+          </div>
+        </div>
+        <div id="bag-coll-step" class="step">
+          <i class="dolly icon"></i>
+          <div class="content">
+            <div class="title">Baggage Collection</div>
+          </div>
+        </div>
+        <div id="handover-step" class="step">
+          <i class="handshake icon"></i>
+          <div class="content">
+            <div class="title">Handover</div>
+          </div>
+        </div>
+      </div>
     </div>
-   
-    <br>
+
+    <br />
     <div class="ui attached fluid one item menu">
-        <a class="item">
-            <strong>Gaurav Goswami</strong>
-        </a>
+      <a class="item">
+        <strong>Gaurav Goswami</strong>
+      </a>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"
+    ></script>
     <script src="js/common.js"></script>
     <script src="js/status.js"></script>
-</body>
-
+  </body>
 </html>

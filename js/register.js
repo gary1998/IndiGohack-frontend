@@ -32,13 +32,13 @@ async function register() {
   var recvrMobile = $("input[name=recvr-mobile-nmbr]").val();
   console.log({
     unmrPNR,
-unmrName,
-dt,
-sourceName,
-destName,
-recvrName,
-recvrMobile,
-  })
+    unmrName,
+    dt,
+    sourceName,
+    destName,
+    recvrName,
+    recvrMobile,
+  });
   if (
     unmrPNR == "" ||
     unmrName == "" ||
@@ -64,8 +64,8 @@ recvrMobile,
     $(".ui .message").css("display", "flex");
   }
 
-  let backendURL="http://0.0.0.0:5600";
-  await $.getJSON("js/config.json", function(resp){
+  let backendURL = "http://0.0.0.0:5600";
+  await $.getJSON("js/config.json", function (resp) {
     backendURL = resp.BACKEND_URL;
   });
   let resp = await fetch(`${backendURL}/api/unmr/register`, {

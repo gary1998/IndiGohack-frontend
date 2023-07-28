@@ -1,144 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FlySolo by IndiGo Airlines</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    />
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/track.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="ui top attached stackable menu">
-        <div class="header item">
-            <button id="menu-toggle-button" class="ui icon button" onclick="toggleMenu()">
-                <i class="bars icon"></i>
-            </button>
-            <img src="https://seekvectorlogo.com/wp-content/uploads/2022/01/indigo-vector-logo-2022.png"
-                alt="Indigo Airlines Logo" class="logo" onclick="window.location.href='index.html';" />
-            <p class="app-header" onclick="window.location.href='index.html';">FlySolo</p>
-        </div>
-        <div class="right menu">
-            <a href="https://www.github.com/gary1998" class="item option">
-                <button class="ui fluid icon black button">
-                    <i class="github icon"></i>
-                    GitHub
-                </button>
-            </a>
-            <a href="https://www.linkedin.com/in/gaurav-goswami-56aa84176" class="item option">
-                <button class="ui fluid icon blue button">
-                    <i class="linkedin icon"></i>
-                    LinkedIn
-                </button>
-            </a>
-            <div id="user-card" class="ui option compact menu">
-                <div class="ui simple dropdown item">
-                  <i class="user icon"></i>
-                  <span id="logged-user-email" class="text">abc@example.com</span>
-                  <div class="menu">
-                    <div onclick="window.location.href='feed.html'" class="item"><i class="pencil icon"></i>Feed Status</div>
-                    <div onclick="logout()" class="item"><i class="logout icon"></i>Logout</div>
-                  </div>
-                </div>
+      <div class="header item">
+        <button
+          id="menu-toggle-button"
+          class="ui icon button"
+          onclick="toggleMenu()"
+        >
+          <i class="bars icon"></i>
+        </button>
+        <img
+          src="https://seekvectorlogo.com/wp-content/uploads/2022/01/indigo-vector-logo-2022.png"
+          alt="Indigo Airlines Logo"
+          class="logo"
+          onclick="window.location.href='index.html';"
+        />
+        <p class="app-header" onclick="window.location.href='index.html';">
+          FlySolo
+        </p>
+      </div>
+      <div class="right menu">
+        <a href="https://www.github.com/gary1998" class="item option">
+          <button class="ui fluid icon black button">
+            <i class="github icon"></i>
+            GitHub
+          </button>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/gaurav-goswami-56aa84176"
+          class="item option"
+        >
+          <button class="ui fluid icon blue button">
+            <i class="linkedin icon"></i>
+            LinkedIn
+          </button>
+        </a>
+        <div id="user-card" class="ui option compact menu">
+          <div class="ui simple dropdown item">
+            <i class="user icon"></i>
+            <span id="logged-user-email" class="text">abc@example.com</span>
+            <div class="menu">
+              <div onclick="window.location.href='feed.html'" class="item">
+                <i class="pencil icon"></i>Feed Status
+              </div>
+              <div onclick="logout()" class="item">
+                <i class="logout icon"></i>Logout
               </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-    <br>
+    <br />
     <div class="ui text container">
-        <form class="ui form">
-            <h4 class="ui dividing header">Track current status of UNMR passenger</h4>
-            <div class="grouped fields">
-                <label>How would you like to search?</label>
-                <div class="field">
-                    <div class="ui radio checkbox">
-                        <input id="def-radio" type="radio" value="opt1" name="search-criteria-sel" tabindex="0">
-                        <label>By UNMR PNR, Name and Date</label>
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="ui radio checkbox">
-                        <input type="radio" value="opt2" name="search-criteria-sel" tabindex="0">
-                        <label>By Source, Destination and Date</label>
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="ui radio checkbox">
-                        <input type="radio" value="opt3" name="search-criteria-sel" tabindex="0">
-                        <label>By Receiver Mobile Number and Date</label>
-                    </div>
-                </div>
-            </div>
-            <br>
+      <form class="ui form">
+        <h4 class="ui dividing header">
+          Track current status of UNMR passenger
+        </h4>
+        <br />
+        <div class="field">
+          <label>UNMR PNR</label>
+          <div class="field">
+            <input name="psgr-pnr" type="text" placeholder="PNR" />
+          </div>
+        </div>
+        <div class="field">
+          <label>Name</label>
+          <div class="two fields">
             <div class="field">
-                <label>UNMR PNR</label>
-                <div class="field">
-                    <input name="psgr-pnr" type="text" placeholder="PNR">
-                </div>
+              <input
+                name="psgr-first-name"
+                type="text"
+                placeholder="First Name"
+              />
             </div>
             <div class="field">
-                <label>Name</label>
-                <div class="two fields">
-                    <div class="field">
-                        <input name="psgr-first-name" type="text" placeholder="First Name">
-                    </div>
-                    <div class="field">
-                        <input name="psgr-last-name" type="text" placeholder="Last Name">
-                    </div>
-                </div>
+              <input
+                name="psgr-last-name"
+                type="text"
+                placeholder="Last Name"
+              />
             </div>
-            <div class="field">
-                <label>Date</label>
-                <div class="field">
-                    <input name="travel-dt" type="date" name="date">
-                </div>
-            </div>
-            <div class="field">
-                <label>Source</label>
-                <div id="source-name-div" class="ui fluid search selection dropdown">
-                    <input type="hidden" name="source-name">
-                    <i class="dropdown icon"></i>
-                    <div class="default text">Select Airport</div>
-                    <div class="menu airports-list">
-                    </div>
-                </div>
-            </div>
-            <div class="field">
-                <label>Destination</label>
-                <div id="dest-name-div" class="ui fluid search selection dropdown">
-                    <input type="hidden" name="dest-name">
-                    <i class="dropdown icon"></i>
-                    <div class="default text">Select Airport</div>
-                    <div class="menu airports-list">
-                    </div>
-                </div>
-            </div>
-            <div class="field">
-                <label>Receiver Mobile Number</label>
-                <div class="field">
-                    <input name="recvr-mobile-nmbr" type="text" placeholder="Mobile Number">
-                </div>
-            </div>
-            <div onclick="search();" class="ui animated fluid green button" tabindex="0">
-                <div class="visible content">Search</div>
-                <div class="hidden content">
-                    <i class="search icon"></i>
-                </div>
-            </div>
-        </form>
+          </div>
+        </div>
+        <div class="required field">
+          <label>Date</label>
+          <div class="field">
+            <input name="travel-dt" type="date" name="date" />
+          </div>
+        </div>
+        <div class="field">
+          <label>Source</label>
+          <div id="source-name-div" class="ui fluid search selection dropdown">
+            <input type="hidden" name="source-name" />
+            <i class="dropdown icon"></i>
+            <div class="default text">Select Airport</div>
+            <div class="menu airports-list"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Destination</label>
+          <div id="dest-name-div" class="ui fluid search selection dropdown">
+            <input type="hidden" name="dest-name" />
+            <i class="dropdown icon"></i>
+            <div class="default text">Select Airport</div>
+            <div class="menu airports-list"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Receiver Mobile Number</label>
+          <div class="field">
+            <input
+              name="recvr-mobile-nmbr"
+              type="text"
+              placeholder="Mobile Number"
+            />
+          </div>
+        </div>
+        <div
+          onclick="search();"
+          class="ui animated fluid green button"
+          tabindex="0"
+        >
+          <div class="visible content">Search</div>
+          <div class="hidden content">
+            <i class="search icon"></i>
+          </div>
+        </div>
+      </form>
+      <div style="display: none" class="ui icon negative message">
+        <i class="notched circle loading icon"></i>
+        <div class="content">
+          <div class="header">Just one second</div>
+          <p>We're fetching that content for you.</p>
+        </div>
+      </div>
     </div>
-    <br>
+    <br />
     <div class="ui attached fluid one item menu">
-        <a class="item">
-            <strong>Gaurav Goswami</strong>
-        </a>
+      <a class="item">
+        <strong>Gaurav Goswami</strong>
+      </a>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
     <script src="js/common.js"></script>
     <script src="js/track.js"></script>
-</body>
-
+  </body>
 </html>

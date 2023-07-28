@@ -71,8 +71,8 @@ async function login() {
     $(".ui .message").css("display", "flex");
   }
 
-  let backendURL="http://0.0.0.0:5600";
-  await $.getJSON("js/config.json", function(resp){
+  let backendURL = "http://0.0.0.0:5600";
+  await $.getJSON("js/config.json", function (resp) {
     backendURL = resp.BACKEND_URL;
   });
   let resp = await fetch(`${backendURL}/api/auth/login`, {
@@ -87,7 +87,6 @@ async function login() {
     }),
   });
   let data = await resp.json();
-
   if (data.error) {
     $(".ui .message .content .header")[0].innerHTML = "Invalid Credentials!";
     $(".ui .message p")[0].innerHTML = "Email or Password is invalid";
@@ -114,6 +113,8 @@ async function login() {
       window.sessionStorage.setItem("flysolo-user-token", data.token);
     }
 
-    setTimeout((window.location.href = "index.html"), 500);
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 500);
   }
 }
