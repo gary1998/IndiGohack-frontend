@@ -30,15 +30,6 @@ async function register() {
   var destName = $("input[name=dest-name]").val();
   var recvrName = $("input[name=recvr-name]").val();
   var recvrMobile = $("input[name=recvr-mobile-nmbr]").val();
-  console.log({
-    unmrPNR,
-    unmrName,
-    dt,
-    sourceName,
-    destName,
-    recvrName,
-    recvrMobile,
-  });
   if (
     unmrPNR == "" ||
     unmrName == "" ||
