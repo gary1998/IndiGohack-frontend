@@ -30,6 +30,7 @@ async function register() {
   var destName = $("input[name=dest-name]").val();
   var recvrName = $("input[name=recvr-name]").val();
   var recvrMobile = $("input[name=recvr-mobile-nmbr]").val();
+  var parentEmail = $("input[name=parent-email]").val();
   if (
     unmrPNR == "" ||
     unmrName == "" ||
@@ -37,7 +38,8 @@ async function register() {
     sourceName == "" ||
     destName == "" ||
     recvrName == "" ||
-    recvrMobile == ""
+    recvrMobile == "" ||
+    parentEmail == ""
   ) {
     $(".ui .message .content .header")[0].innerHTML = "Error!";
     $(".ui .message p")[0].innerHTML = "All above details are necessary";
@@ -73,6 +75,7 @@ async function register() {
       destination: destName,
       receiver_name: recvrName,
       receiver_phone: recvrMobile,
+      parent_email: parentEmail
     }),
   });
 
