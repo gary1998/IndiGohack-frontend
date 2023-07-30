@@ -10,11 +10,13 @@ ENV PORT $PORT
 ENV NODE_ENV production
 
 COPY package.json /opt/app-root/src
+RUN chmod -R 775 /opt/app-root/src
 RUN npm install
 COPY . /opt/app-root/src
 
 RUN rm -rf js/config.json
 RUN echo "{\"BACKEND_URL\": \"$BACKEND_URL\"}" >> /opt/app-root/src/js/config.json
 
+USER 1001
 EXPOSE ${PORT}
 CMD [ "npm", "start" ]
