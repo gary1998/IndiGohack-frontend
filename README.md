@@ -13,7 +13,7 @@
 * Install all dependent libraries/modules of the project:
   * Go to the project dir, and execute: `npm install`.
  
-## Environemt Variables
+## Environment Variables
 * BACKEND_URL: URL of the [backend](https://github.com/gary1998/IndiGohack-backend) services.
 
 ## Steps to run
